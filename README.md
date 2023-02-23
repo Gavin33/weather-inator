@@ -1,3 +1,6 @@
+Special thanks to Louis Laugesen for his list of valid and invalid zips: https://gist.github.com/lsl/98eb26082f71ce5d4f39eb348401b28b
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
