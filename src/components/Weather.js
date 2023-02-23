@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from 'react';
+import validateZip from './zip/validateZip';
 
 // key for geolocation api
 const geolocation = '10a4485a538c4751a5c40c516997d3a5';
@@ -13,18 +14,38 @@ const post = async (weatherUrl) => {
 };
 
 const Weather = (props) => {
-  const [weather, setWeather] = useState(<div />)
+  const [weather, setWeather] = useState(<div />);
   const getTemp = async () => {
-
     // authenticate
     if (isNaN(props.input.value) === true) {
-      return ["error", "New number, what dis?"];
+      // test code for zip verification
+/*       for (let i = 0; i < validZip.length; i++) {
+        const zip = validateZip(validZip[i]);
+        console.log(validZip[i]);
+        console.log(zip);
+        if (!zip) {
+          break;
+        }
+      }
+      for (let i = 0; i < invalidZip.length; i++) {
+        const zip = validateZip(invalidZip[i]);
+        console.log(invalidZip[i]);
+        console.log(zip);
+        if (zip) {
+          break;
+        }
+      } */
+      return ['error', 'New number, what dis?'];
     }
     if (props.input.value.length !== 5) {
-      return ["error", "Zip codes are 5 digits"]
+      return ['error', 'Zip codes are 5 digits'];
     }
+    if (!validateZip(props.input.value)) {
+      return ['error', 'Invalid zip code']
+    }
+
     // loading
-    setWeather(<div>Loading...</div>)
+    setWeather(<div>Loading...</div>);
 
     // Main function
     const locUrl = `https://geocode.xyz/${props.input.value}?region=US&json=1`;
@@ -50,11 +71,17 @@ const Weather = (props) => {
     };
     // get all variables needed for weather information
     const locTime = await latLon(locUrl);
-    console.log(locTime)
+    console.log(locTime);
     // find the high and low
     const tempUrl = `https://api.open-meteo.com/v1/forecast?latitude=${locTime.loc.latt}&longitude=${locTime.loc.longt}&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=${locTime.time.timezone}&start_date=${locTime.time.date}&end_date=${locTime.time.date}`;
     const temp = await post(tempUrl);
-    setWeather(<div> The high for today is {temp.daily.temperature_2m_max}&deg;F. The low is {temp.daily.temperature_2m_min}&deg;F.</div>)
+    setWeather(
+      <div>
+        {' '}
+        The high for today is {temp.daily.temperature_2m_max}&deg;F. The low is{' '}
+        {temp.daily.temperature_2m_min}&deg;F.
+      </div>
+    );
   };
   return (
     <div>
