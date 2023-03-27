@@ -17,7 +17,8 @@ function App() {
   const inputProps = useInput();
   return (
     <div className="App">
-      <label for="zip">Please enter a zip code.</label>
+      <h1 class="blue">The Weather-Inator</h1>
+      <label for="zip" class="">Please enter a zip code.</label>
       <input
         type="text"
         id="zip"

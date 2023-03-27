@@ -1,3 +1,89 @@
+html {
+  background: url(./bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+@font-face {
+  font-family: 'Rocher';
+  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
+
+body {
+  font-family: 'Rocher';
+  text-align: center;
+  font-size: 50px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+h1 {
+  margin: 0;
+  margin-bottom: 10vw;
+}
+
+@font-palette-values --Grays {
+  font-family: Rocher;
+  base-palette: 9;
+}
+
+@font-palette-values --Pinks {
+  font-family: Rocher;
+  base-palette: 1;
+}
+
+@font-palette-values --Blue {
+  font-family: Rocher;
+  base-palette: 4;
+}
+
+.grays {
+  font-palette: --Grays;
+}
+
+.pinks {
+  font-palette: --Pinks;
+}
+
+.blue {
+  font-palette: --Blue;
+}
+
+input {
+  width: 160px;
+  height: 40px;
+  display: block;
+  margin: auto;
+  margin-bottom: 3vw;
+  margin-top: 7vw;
+  font-size: 30px;
+  text-align: center;
+  background-color: #fff7c2;
+  border-style: groove;
+  border-radius: 10px;
+  border-width: 3px;
+  border-color: rgb(138, 138, 138);
+  font-family: 'Yantramanav', sans-serif;
+  /* color: #030303; */
+  /* #fff7c2 */
+}
+::placeholder {
+  font-family: 'Yantramanav', sans-serif;
+  /* color: #030303 */
+}
+
+#submit {
+  background-color: #fa6156;
+  margin-top: 3vw;
+}
+
+.output {
+  font-family: 'Yantramanav', sans-serif;
+  color: #fffb02;
+  filter: drop-shadow(3px 2px 4px black)
+}
+
 .App {
   text-align: center;
 }
